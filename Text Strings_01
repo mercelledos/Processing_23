@@ -1,0 +1,60 @@
+/*
+ TEXT TIPS
+ 
+ // Align Options //
+ textAlign(LEFT, TOP);
+ textAlign(CENTER, CENTER);
+ 
+ // line-breaks //
+ 
+ No line-breaks:
+ String frase = "Hola que tal?";
+ Line breaks
+ String frase = "Hola\nque\ntal?";
+ 
+ 
+ */
+
+// Declarar/Crear la font amb PFont.
+PFont ABC;
+
+
+void setup() {
+  size(900, 600);
+  ABC = createFont ("ABCMonumentGroteskMono-Regular-Trial.otf", 1000);
+  // Configurar al Setup la font.
+}
+
+//TEXT AMB SALTOS
+//String txt = "Hola\nque\ntal?";
+
+// PRINTLN AMB TEXT
+//String txt1 = "FrameCount is ";
+//String msg = txt1+frameCount;
+
+// Usos del text (LA HORA)
+String txt2 = "It's ";
+String hour = txt2 + (hour()+":"+minute()+":"+second());
+
+void draw() {
+
+  //////// SETTINGS ////////
+  background (0);
+  fill(#f1f1f1);
+
+  /////// SETTINGS ESPECIFICS TYPE ////////
+  /* Declarar tipografia*/
+  textFont (ABC);
+
+  /* Declarar mida*/
+  textSize(30);
+
+  /* Declarar espaiat entre caracteres*/
+  //textLeading(10);
+
+  /* Alinear */
+  textAlign(CENTER, CENTER);
+
+  /* !!!!!EL TEXT!!!!! */
+  text (hour, width/2, height/2);
+}
