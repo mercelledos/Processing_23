@@ -1,0 +1,43 @@
+/* 
+The value range of the variable wave is between -500 and 500, depending on the wave phase.
+
+float wave = sin(frameCount) * 500;
+
+map();
+map (input, min 1, max 1, min 2, max2);
+1: input value to be converted
+2+3 : original value range
+4+5 : desired value range 
+
+*/
+
+void setup() {
+  size(900, 600);
+}
+
+void draw() {
+  
+  /////////// SETTINGS ///////////
+  background(0);
+  fill(#F1F1F1);
+  noStroke();
+  translate(width/2,0);
+  
+  float h = height/3;
+  
+  for( int i = 0; i < width/2; i++){
+  float wave1 = sin (radians(frameCount+i)) * 500 ;
+  rect (wave1, 0, 3, h);
+  }
+  float wave2 = map(sin(radians(frameCount)), -1, 1, width/2, 0);
+  rect(wave2, h, 3, h);
+  
+  float wave3 = map(sin(radians(frameCount)), -1, 1, -width/2, 0);
+  rect(wave3, h *2, 3, h);
+  
+  
+  
+  
+  
+}
+
