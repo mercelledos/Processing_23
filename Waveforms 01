@@ -1,0 +1,33 @@
+float num = 30;
+
+void setup() {
+  size(900, 700);
+}
+
+void draw() {
+
+  background(#3648FF);
+  fill (#F1f1f1);
+  noStroke();
+  rectMode(CENTER);
+
+  translate (width/2, height/2);
+
+
+  for (int i=0; i<360; i++) {
+    float waveX = cos(radians (frameCount*0.3+i))*400;
+    float waveY = sin(radians (frameCount+i))*200;
+
+    rect (waveX, waveY, 5, 100);
+  }
+
+  float sizeX = sin(radians(frameCount*5))*20;
+  
+  for (int i=0; i<360; i++) {
+    float waveX = sin(radians (frameCount*0.3+i))*400;
+    float waveY = cos(radians (frameCount+i))*200;
+
+
+    rect (waveX, waveY, 5, sizeX);
+  }
+}
