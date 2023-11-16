@@ -1,4 +1,12 @@
-float num = 30;
+/* 
+Formes creades a partir de sin() + cos() amb rectangles.
+For-loop = Per crear sequencia de + de 1. Aqui hi ha 360 per crear un cercle = 360 graus.
+wave X/Y = moviment a partir de sin/cos + radians + frameCount + rango.
+  frameCount = "moviment" que se l'hi ha de multiplicar un valor perque s'accioni
+               i sumar-li el int del for-loop perque es crei la repetició.
+  rango = valor pel qual es multiplica per crear bàsicament la mida de on abarca el moviment. 
+*/
+
 
 void setup() {
   size(900, 700);
@@ -6,27 +14,29 @@ void setup() {
 
 void draw() {
 
+  /////////// SETTINGS ///////////
   background(#3648FF);
   fill (#F1f1f1);
   noStroke();
   rectMode(CENTER);
-
   translate (width/2, height/2);
 
-
+  /////////// FORMA NUM.01 ///////////
   for (int i=0; i<360; i++) {
-    float waveX = cos(radians (frameCount*0.3+i))*400;
-    float waveY = sin(radians (frameCount+i))*200;
+
+    float waveX = cos(radians (frameCount*0.4+i))*400;
+    float waveY = sin(radians (frameCount+i))*400;
 
     rect (waveX, waveY, 5, 100);
   }
+  /////////// FORMA NUM.02 ///////////
 
   float sizeX = sin(radians(frameCount*5))*20;
-  
-  for (int i=0; i<360; i++) {
-    float waveX = sin(radians (frameCount*0.3+i))*400;
-    float waveY = cos(radians (frameCount+i))*200;
 
+  for (int i=0; i<360; i++) {
+
+    float waveX = sin(radians (frameCount+i))*400;
+    float waveY = cos(radians (frameCount+i))*400;
 
     rect (waveX, waveY, 5, sizeX);
   }
