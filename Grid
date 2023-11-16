@@ -1,0 +1,25 @@
+
+void setup() {
+  size(800, 800);
+}
+
+void draw() {
+  background(0);
+  noStroke();
+  fill(#f1f1f1);
+
+  
+  float tilesX = 20; 
+  float tilesY = 20;
+
+  float TX = width/tilesX;
+  float TY = width/tilesY;
+  
+  translate(TX/2, TY/2);
+
+  for (int x = 0; x < tilesX; x++) {
+    for (int y = 0; y < tilesY; y++) {
+      ellipse(x*TX, y*TY, TX, TY);
+    }
+  }
+}
