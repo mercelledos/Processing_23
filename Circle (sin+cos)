@@ -1,0 +1,22 @@
+float num = 30;
+
+void setup() {
+  size(900, 700);
+  fill (#F1f1f1);
+  noStroke();
+  background(0);
+}
+
+void draw() {
+ 
+  
+  translate (width/2,height/2);
+  
+  // waveX = moviment sinus(radians(frameCount))*rango de moviment
+  // el sin() te un rango de -1 a 1. Per tant s'ha de multiplicar.
+
+  float waveX = cos(radians (frameCount))*300;
+  float waveY = sin(radians (frameCount))*300;
+
+  ellipse (waveX, waveY, 5, 5);
+}
