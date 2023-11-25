@@ -1,0 +1,40 @@
+/*------- INSERTAR FOTO ------- */
+PImage foto;
+/*------- Settings GRID ------- */
+// numero de quadrats 
+int squareX = 30;
+int squareY = 30;
+
+void setup() {
+  size(900, 900);
+  /*------- Image Settings ------- */
+  foto = loadImage("IMG_1011.JPG"); 
+  foto.resize(squareX,squareY); // escalar foto a (x,y)
+}
+
+void draw() {
+  background(#303030);
+  fill (255);
+  
+  /*------- Crear grid  ------- */
+  float columnaX = width/squareX; // la columna x = amplada del sketch entre el num de quadrats
+  float columnaY = height/squareY; // la columna y = alçada del sketch entre el num de quadrats
+  
+  // for-loop
+  for (int x = 0; x < squareX; x++) {
+    for (int y = 0; y < squareY; y++) {
+      
+      color c = foto.get(x,y); // color
+      float brillo = brightness (c); // brillo = color pillao
+      fill (brillo); //(rellenar de brillo)
+      
+      /* rect(a, b, c, d) 
+          a: coordinada x
+          b: coordinada y
+          c: size x
+          d: size y    */
+      
+      rect ( x*columnaX, y*columnaY, columnaX, columnaY);
+    }
+  }
+}
