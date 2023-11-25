@@ -1,0 +1,65 @@
+FALTA CENTRAR
+
+/*
+flip camera : 
+scale(-1,1);
+image(cam,-width,0);
+*/
+
+/*---------CAMARA SETTINGS ------------ */
+import processing.video.*;
+Capture webcam;
+
+/*------- INSERTAR FOTO ------- */
+PImage foto;
+
+/*------- Settings GRID ------- */
+// numero de quadrats 
+int squareX = 200;
+int squareY = 200;
+
+void setup() {
+  size(900, 900);
+  /*------- Camera Settings ------- */
+  webcam = new Capture (this, squareX,squareY,30);
+  webcam.start(); //inicializar 
+  
+}
+
+void draw() {
+  background(#f1f1f1);
+  fill (#2100FF);
+  noStroke();
+  
+  /*------- Load camera  ------- */
+   if (webcam.available()){
+    webcam.read();
+    }
+  
+  /*------- Crear grid  ------- */
+  float columnaX = width/squareX; // la columna x = amplada del sketch entre el num de quadrats
+  float columnaY = height/squareY; // la columna y = alçada del sketch entre el num de quadrats
+  rectMode(CENTER);
+  
+ 
+  // for-loop
+  for (int x = 0; x < squareX; x++) {
+    for (int y = 0; y < squareY; y++) {
+      
+      color c = webcam.get(x,y); // color
+      float brillo = brightness (c); // brillo = color pillao
+      float rasterization = map(brillo, 0, 255, 1,0);
+      //fill (255); //(rellenar de brillo)
+      
+      /* rect(a, b, c, d) 
+          a: coordinada x
+          b: coordinada y
+          c: size x
+          d: size y    */
+      
+      rect ( x*columnaX, y*columnaY, columnaX*rasterization, columnaY*rasterization);
+      
+  }
+  }
+  
+}
