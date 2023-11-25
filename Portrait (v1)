@@ -1,15 +1,15 @@
 PImage img;
 
-int tilesX = 80;
-int tilesY = 80;
+int tilesX = 120;
+int tilesY = 120;
 
 float a = frameCount;
 float velocidad = TWO_PI/0.01;
 
 // BLAU ELECTRIC
-color c1 = #0028FF; 
+color c1 = #533AFA; 
 // BLAU PASTEL
-color c2 = #BCC6FF;
+color c2 = #F5F5F7;
 
 
 
@@ -20,8 +20,8 @@ void setup() {
 }
 
 void draw() {
-  background(#FF7740);
-  fill(#0F35FF);
+  background(c2);
+  fill(c1);
   noStroke();
 
   float TX = width/tilesX;
@@ -48,7 +48,7 @@ void draw() {
 
       push();
       translate(x*TX-width/2, y*TX-height/2, z*magnitude);
-      ellipse(0, 0, TX*s*1, TY*s*1);
+      rect(0, 0, TX*s*1, TY*s*1);
       pop();
     }
   }
