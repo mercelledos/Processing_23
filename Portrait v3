@@ -1,0 +1,70 @@
+
+PImage img;
+
+int tilesX = 120;
+int tilesY = 120;
+
+float a = frameCount;
+float velocidad = TWO_PI/0.01;
+
+// BLAU ELECTRIC
+color c1 = #533AFA;
+// BLAU PASTEL
+color c2 = #F5F5F7;
+
+
+
+
+
+void setup() {
+  size(700, 700, P3D);
+  frameRate(30);
+  img = loadImage("foto_carnet_2021.JPG");
+  img.resize(tilesX, tilesY);
+  img.filter(BLUR, 1);
+}
+
+void draw() {
+  background(0);
+  fill(255);
+  noStroke();
+  lights();
+  ambientLight(255,255,255);
+
+  float TX = width/tilesX;
+  float TY = height/tilesY;
+  rectMode(CENTER);
+
+  push();
+  translate(width/2, height/2, 0);
+  scale(0.6);
+  
+  //rotateY(-45);
+  
+
+
+
+
+  for (int x = 0; x < tilesX; x++) {
+    for (int y = 0; y < tilesY; y++) {
+
+      color c = img.get(x, y);
+      float b = brightness(c);
+      float t = map(b, 0, 255, 0, 1);
+      float z = map(b, 0, 255, -1, 1);
+
+      float wave = sin(radians(frameCount*1.5))*(400);
+
+      float magnitude = wave;
+      float allargar = sin(radians(frameCount*1.5))*10;
+      
+
+      push();
+      translate(x*TX-width/2, y*TX-height/2, z*magnitude);
+      box(2*t, 2*t,allargar );
+      pop();
+    }
+  }
+  pop();
+  saveFrame();
+}
