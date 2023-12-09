@@ -1,0 +1,41 @@
+
+
+import ch.bildspur.artnet.*;
+
+ArtNetClient artnet;
+byte[] dmxData = new byte[512];
+String controllerAddress = "192.168.6.11";
+int curUniverse = 0;
+
+void setup()
+{
+  size(500, 250);
+  
+  colorMode(RGB, 360, 100, 100);
+  textAlign(CENTER, CENTER);
+  textSize(20);
+
+  // create artnet client without buffer (no receving needed)
+  artnet = new ArtNetClient(null);
+  artnet.start();
+}
+
+void draw()
+{
+  // create color
+  int c = color(#F51B1B);
+
+  background(c);
+
+  // fill dmx array GRB:
+  // aqui están declarats 3 canals aka equivalen al pixel 01.
+  dmxData[0] = (byte) 0;
+  dmxData[1] = (byte) 255;
+  dmxData[2] = (byte) 0;
+
+  // send dmx to localhost
+  artnet.unicastDmx(controllerAddress, 0, curUniverse, dmxData);
+
+  // show values
+  //text("R: " + (int)red(c) + " Green: " + (int)green(c) + " Blue: " + (int)blue(c), width / 2, height / 2);
+}
